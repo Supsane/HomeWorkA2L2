@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HomeWorkA2L2</string>
+    <string name="key">Ключ</string>
+    <string name="value">Значение</string>
+    <string name="add_button">Добавить</string>
+    <string name="check_button">Проверить</string>
+    <string name="delete_button">Удалить</string>
+    <string name="load_internal_memory">Загр. во внутр. память</string>
+    <string name="load_external_memory">Загр. во внеш. память</string>
+    <string name="show_internal_memory">Показать из внутр. памяти</string>
+    <string name="show_external_memory">Показать из внеш. памяти</string>
+</resources>

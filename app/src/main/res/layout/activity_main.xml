@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/main_margin"
+    android:orientation="vertical"
+    tools:context="com.chashurin.homeworka2l2.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/key"
+            android:textSize="@dimen/text_key_size" />
+
+        <EditText
+            android:id="@+id/keyEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/value"
+            android:textSize="@dimen/text_key_size" />
+
+        <EditText
+            android:id="@+id/valueEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_button" />
+
+        <Button
+            android:id="@+id/checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/check_button" />
+
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/loadInternalMemory"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:text="@string/load_internal_memory" />
+
+        <Button
+            android:id="@+id/loadExternalMemory"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:text="@string/load_external_memory" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/showInternalMemory"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:text="@string/show_internal_memory" />
+
+        <Button
+            android:id="@+id/showExternalMemory"
+            android:layout_width="@dimen/width_button"
+            android:layout_height="wrap_content"
+            android:text="@string/show_external_memory" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/pictureImageView"
+        android:layout_width="@dimen/width_picture"
+        android:layout_height="@dimen/height_picture"
+        android:layout_marginTop="@dimen/main_margin"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
