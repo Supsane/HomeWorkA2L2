@@ -2,7 +2,9 @@ package com.chashurin.homeworka2l2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -134,6 +136,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+
+    /*
+    *
+    * Никак не могу понять почему не хочет копировать картинку. Много чего перепробовал, не получается
+    *
+    * */
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void loadInternalMemory() {
         File file;
@@ -144,10 +153,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!file.exists()) {
                 file.createNewFile();
             }
-            File source = new File("src/main/res/drawable/picture.png");
+            Bitmap picture = BitmapFactory.decodeFile(getAssets() + "picture.png");
+
             fileOut = new FileOutputStream(file, false);
             out = new ObjectOutputStream(fileOut);
-            out.writeObject(source);
+            out.writeObject(picture);
             out.close();
             fileOut.close();
         } catch (Exception e) {
@@ -155,30 +165,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void loadExternalMemory() {
+        File file;
+        try {
+            file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES) + SERIALIZED_FILE_NAME);
+            FileOutputStream fileOut;
+            ObjectOutputStream out;
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.picture);
 
+            fileOut = new FileOutputStream(file, false);
+            out = new ObjectOutputStream(fileOut);
+            out.writeObject(picture);
+            out.close();
+            fileOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    @SuppressWarnings("all")
+
+    @SuppressWarnings("ConstantConditions")
     private void showInternalMemory() {
         FileInputStream fileIn = null;
         ObjectInputStream in = null;
-
+        Bitmap picture = null;
         try {
             fileIn = new FileInputStream(getFilesDir() + SERIALIZED_FILE_NAME);
             in = new ObjectInputStream(fileIn);
-            pictureImageView.setImageDrawable((Drawable) in.readObject());
+            picture = (Bitmap) in.readObject();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
                 in.close();
                 fileIn.close();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
+
+        pictureImageView.setImageBitmap(picture);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void showExternalMemory() {
+        FileInputStream fileIn = null;
+        ObjectInputStream in = null;
+        Bitmap picture = null;
+        try {
+            fileIn = new FileInputStream(getExternalFilesDir(Environment.DIRECTORY_PICTURES) + SERIALIZED_FILE_NAME);
+            in = new ObjectInputStream(fileIn);
+            picture = (Bitmap) in.readObject();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+                fileIn.close();
+            } catch (Exception ignored) {
+            }
+        }
+
+        pictureImageView.setImageBitmap(picture);
     }
 }
